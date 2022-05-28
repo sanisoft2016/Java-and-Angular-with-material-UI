@@ -1,0 +1,71 @@
+<h1 mat-dialog-title>Add Student Form</h1>
+
+    <div mat-dialog-content> 
+        <form [formGroup]="studentForm">
+            <mat-form-field appearance="outline">
+                <mat-label>Admission Number</mat-label>
+                <input formControlName="admissionNo" matInput placeholder="Admission Number">
+            </mat-form-field>
+        
+            <mat-form-field appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input formControlName="firstName" matInput placeholder="First Name">
+            </mat-form-field>
+        
+            <mat-form-field appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input formControlName="lastName" matInput placeholder="Last Name">
+            </mat-form-field>
+        
+            <mat-form-field appearance="outline">
+                <mat-label>Date of birth</mat-label>
+                <input formControlName="dateOfBirth" matInput [matDatepicker]="picker">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+              
+            <mat-form-field appearance="outline">
+                <mat-label>Date of Admission</mat-label>
+                <input formControlName="dateOfAdmsn" matInput [matDatepicker]="picker">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        
+            <mat-form-field appearance="outline">
+                <mat-label>Religion</mat-label>
+                <mat-select placeholder="Religion" formControlName="religion">
+                    <mat-option value=0>Islam</mat-option>
+                    <mat-option value=1>Christianity</mat-option>
+                    <mat-option value=2>Traditional</mat-option>
+                </mat-select>
+            </mat-form-field>
+        
+            <label for="gender"><h2>Select Gender</h2></label>
+            <mat-radio-group formControlName="gender" class="example-radio-group">
+                <mat-radio-button class="example-radio-button" *ngFor="let genda of genderList" [value]="genda">
+                    {{genda}}
+                </mat-radio-button>
+            </mat-radio-group>
+          
+            <mat-form-field appearance="outline">
+                <mat-label>Blood Group</mat-label>
+                <input formControlName="bloodGroup" matInput placeholder="Blood Group">
+            </mat-form-field>
+        
+            <mat-form-field appearance="outline">
+                <mat-label>Start Class</mat-label>
+                <input formControlName="startClass" matInput placeholder="Start Class">
+            </mat-form-field>
+        
+            <mat-form-field appearance="outline">
+                <mat-label>Current Class</mat-label>
+                <input formControlName="currentClassId" matInput placeholder="Current Class" type="number">
+            </mat-form-field>
+        </form>
+    </div>
+<div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+    <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addStudent()">Save</button>
+</div>
